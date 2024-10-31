@@ -101,7 +101,7 @@
     "url": "https://github.com/CaoMeiYouRen/rsshub-never-die/issues"
   },
   "dependencies": {
-    "@hono/node-server": "^1.13.2",
+    "@hono/node-server": "^1.13.4",
     "dotenv": "^16.4.5",
     "hono": "^4.6.6",
     "tslib": "^2.8.0",
