@@ -104,7 +104,7 @@
     "@hono/node-server": "^1.13.4",
     "dotenv": "^16.4.5",
     "hono": "^4.6.8",
-    "tslib": "^2.8.0",
+    "tslib": "^2.8.1",
     "winston": "^3.15.0",
     "winston-daily-rotate-file": "^5.0.0"
   },
