@@ -13,13 +13,13 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.13.8
-        version: 1.13.8(hono@4.7.4)
+        version: 1.13.8(hono@4.7.5)
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
       hono:
-        specifier: ^4.7.4
-        version: 4.7.4
+        specifier: ^4.7.5
+        version: 4.7.5
       tslib:
         specifier: ^2.8.0
         version: 2.8.0
@@ -2550,8 +2550,8 @@ packages:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
     engines: {node: '>=0.10.0'}
 
-  hono@4.7.4:
-    resolution: {integrity: sha512-Pst8FuGqz3L7tFF+u9Pu70eI0xa5S3LPUmrNd5Jm8nTHze9FxLTK9Kaj5g/k4UcwuJSXTP65SyHOPLrffpcAJg==}
+  hono@4.7.5:
+    resolution: {integrity: sha512-fDOK5W2C1vZACsgLONigdZTRZxuBqFtcKh7bUQ5cVSbwI2RWjloJDcgFOVzbQrlI6pCmhlTsVYZ7zpLj4m4qMQ==}
     engines: {node: '>=16.9.0'}
 
   hook-std@3.0.0:
@@ -5228,9 +5228,9 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@hono/node-server@1.13.8(hono@4.7.4)':
+  '@hono/node-server@1.13.8(hono@4.7.5)':
     dependencies:
-      hono: 4.7.4
+      hono: 4.7.5
 
   '@humanwhocodes/config-array@0.13.0':
     dependencies:
@@ -7492,7 +7492,7 @@ snapshots:
     dependencies:
       parse-passwd: 1.0.0
 
-  hono@4.7.4: {}
+  hono@4.7.5: {}
 
   hook-std@3.0.0: {}
 
