@@ -66,7 +66,7 @@
     "semantic-release": "21.0.1",
     "tsup": "^8.4.0",
     "tsx": "^4.19.4",
-    "typescript": "^5.8.2",
+    "typescript": "^5.8.3",
     "vercel": "^41.7.0",
     "wrangler": "^4.13.2"
   },
