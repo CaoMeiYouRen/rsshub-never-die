@@ -38,7 +38,7 @@
     "deploy:wrangler": "wrangler deploy"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250430.0",
+    "@cloudflare/workers-types": "^4.20250731.0",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@semantic-release/changelog": "^6.0.3",
