@@ -1,4 +1,3 @@
-/* eslint-disable no-console, @typescript-eslint/no-var-requires */
 const path = require('path')
 const fs = require('fs-extra')
 const { nodeFileTrace } = require('@vercel/nft');
