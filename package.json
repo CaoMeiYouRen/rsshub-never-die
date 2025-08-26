@@ -97,7 +97,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.18.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.2.1",
     "hono": "^4.9.4",
     "tslib": "^2.8.0",
     "winston": "^3.17.0",
