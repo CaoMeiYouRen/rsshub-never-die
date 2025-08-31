@@ -62,7 +62,7 @@
     "tsup": "^8.5.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
-    "vercel": "^41.7.0",
+    "vercel": "^46.1.1",
     "wrangler": "^4.33.1"
   },
   "config": {
