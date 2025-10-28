@@ -18,7 +18,7 @@ MAX_BODY_SIZE = 104857600
 CACHE_MAX_AGE = 300
 # RSSHub 实例 的 URL 地址，，使用英文逗号分隔。
 # 官方实例 https://rsshub.app 不用列出，默认添加。
-RSSHUB_NODE_URLS = 'https://rsshub.rssforever.com, https://hub.slarker.me, https://rsshub.pseudoyu.com, https://rsshub.ktachibana.party, https://rsshub.woodland.cafe, https://rss.owo.nz, https://yangzhi.app, https://rsshub.henry.wang, https://rss.peachyjoy.top, https://rsshub.speednet.icu'
+RSSHUB_NODE_URLS = 'https://rsshub.rssforever.com,https://hub.slarker.me,https://rsshub.pseudoyu.com,https://rsshub.ktachibana.party,https://rss.peachyjoy.top,https://rsshub.umzzz.com,https://rsshub.isrss.com,https://rsshub.asailor.org,https://rsshub.cups.moe'
 # 访问码，注意和 RSSHub 的 ACCESS_KEY 不是同一个。
 # 留空则不做限制
 AUTH_KEY = ''
