@@ -54,7 +54,7 @@
     "eslint-config-cmyr": "2.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
-    "rimraf": "^6.0.1",
+    "rimraf": "^6.1.0",
     "semantic-release": "25.0.1",
     "semantic-release-cmyr-config": "^1.0.0",
     "tsup": "^8.5.0",
