@@ -85,8 +85,8 @@ importers:
         specifier: 25.0.1
         version: 25.0.1(typescript@5.9.3)
       semantic-release-cmyr-config:
-        specifier: ^1.0.0
-        version: 1.0.0(semantic-release@25.0.1(typescript@5.9.3))
+        specifier: ^1.0.1
+        version: 1.0.1(semantic-release@25.0.1(typescript@5.9.3))
       tsup:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1)
@@ -2860,10 +2860,6 @@ packages:
     resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
     engines: {node: '>=14.14'}
 
-  fs-extra@11.2.0:
-    resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
-    engines: {node: '>=14.14'}
-
   fs-extra@11.3.2:
     resolution: {integrity: sha512-Xr9F6z6up6Ws+NjzMCZc6WXg2YFRlrLP9NQDO3VQrWrfiojdhS56TzueT88ze0uBdCTwEIhQ3ptnmKeWGFAe0A==}
     engines: {node: '>=14.14'}
@@ -4497,8 +4493,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  semantic-release-cmyr-config@1.0.0:
-    resolution: {integrity: sha512-RCZjnZGhDz1xgVw1xsbOMJGKXHaSPZz+DlHKsgz4975fRvkkFjk7zAcappLMZohAWnJref9iQBQqEASHvfr/Sw==}
+  semantic-release-cmyr-config@1.0.1:
+    resolution: {integrity: sha512-0CnBAm8GGPQ0yRFNxaCksCF18YeyvYdLGB1uVCZ2uWsyuWT434jflvtwU+HyCZSah/jH1Urlj6eQDMp0dK6Fig==}
     engines: {node: '>=18'}
     peerDependencies:
       semantic-release: '>=24'
@@ -4988,8 +4984,8 @@ packages:
   ufo@1.6.1:
     resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
 
-  uglify-js@3.17.4:
-    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
+  uglify-js@3.19.3:
+    resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
     engines: {node: '>=0.8.0'}
     hasBin: true
 
@@ -6287,7 +6283,7 @@ snapshots:
     dependencies:
       '@semantic-release/error': 3.0.0
       aggregate-error: 3.1.0
-      fs-extra: 11.2.0
+      fs-extra: 11.3.2
       lodash: 4.17.21
       semantic-release: 25.0.1(typescript@5.9.3)
 
@@ -8134,12 +8130,6 @@ snapshots:
       jsonfile: 6.2.0
       universalify: 2.0.1
 
-  fs-extra@11.2.0:
-    dependencies:
-      graceful-fs: 4.2.11
-      jsonfile: 6.2.0
-      universalify: 2.0.1
-
   fs-extra@11.3.2:
     dependencies:
       graceful-fs: 4.2.11
@@ -8332,7 +8322,7 @@ snapshots:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.17.4
+      uglify-js: 3.19.3
 
   has-bigints@1.1.0: {}
 
@@ -9914,7 +9904,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  semantic-release-cmyr-config@1.0.0(semantic-release@25.0.1(typescript@5.9.3)):
+  semantic-release-cmyr-config@1.0.1(semantic-release@25.0.1(typescript@5.9.3)):
     dependencies:
       '@semantic-release/changelog': 6.0.3(semantic-release@25.0.1(typescript@5.9.3))
       '@semantic-release/git': 10.0.1(semantic-release@25.0.1(typescript@5.9.3))
@@ -10495,7 +10485,7 @@ snapshots:
 
   ufo@1.6.1: {}
 
-  uglify-js@3.17.4:
+  uglify-js@3.19.3:
     optional: true
 
   uid-promise@1.0.0: {}
