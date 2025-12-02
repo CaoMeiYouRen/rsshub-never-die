@@ -104,7 +104,11 @@
   "pnpm": {
     "overrides": {
       "compare-func": "^2.0.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd"
+    ]
   },
   "type": "module"
 }
