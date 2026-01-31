@@ -38,7 +38,7 @@
     "deploy:wrangler": "wrangler deploy"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20251231.0",
+    "@cloudflare/workers-types": "^4.20260131.0",
     "@commitlint/cli": "^20.2.0",
     "@types/debug": "^4.1.12",
     "@types/fs-extra": "^11.0.4",
