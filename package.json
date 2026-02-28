@@ -96,7 +96,7 @@
   "dependencies": {
     "@hono/node-server": "^1.19.9",
     "dotenv": "^17.3.1",
-    "hono": "^4.11.7",
+    "hono": "^4.12.3",
     "tslib": "^2.8.0",
     "winston": "^3.19.0",
     "winston-daily-rotate-file": "^5.0.0"
