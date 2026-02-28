@@ -35,7 +35,7 @@ importers:
         version: 4.20260228.1
       '@commitlint/cli':
         specifier: ^20.4.2
-        version: 20.4.2(@types/node@25.1.0)(typescript@5.9.3)
+        version: 20.4.2(@types/node@25.3.3)(typescript@5.9.3)
       '@types/debug':
         specifier: ^4.1.12
         version: 4.1.12
@@ -46,14 +46,14 @@ importers:
         specifier: ^4.17.12
         version: 4.17.12
       '@types/node':
-        specifier: ^25.1.0
-        version: 25.1.0
+        specifier: ^25.3.3
+        version: 25.3.3
       '@vercel/nft':
         specifier: ^1.3.0
         version: 1.3.0(rollup@4.53.3)
       commitizen:
         specifier: ^4.3.1
-        version: 4.3.1(@types/node@25.1.0)(typescript@5.9.3)
+        version: 4.3.1(@types/node@25.3.3)(typescript@5.9.3)
       commitlint-config-cmyr:
         specifier: ^1.0.0
         version: 1.0.0
@@ -62,7 +62,7 @@ importers:
         version: 10.1.0
       cz-conventional-changelog-cmyr:
         specifier: ^2.0.0
-        version: 2.0.0(@types/node@25.1.0)(commitizen@4.3.1(@types/node@25.1.0)(typescript@5.9.3))(typescript@5.9.3)
+        version: 2.0.0(@types/node@25.3.3)(commitizen@4.3.1(@types/node@25.3.3)(typescript@5.9.3))(typescript@5.9.3)
       debug:
         specifier: ^4.4.3
         version: 4.4.3
@@ -1375,8 +1375,8 @@ packages:
   '@types/node@20.11.0':
     resolution: {integrity: sha512-o9bjXmDNcF7GbM4CNQpmi+TutCgap/K3w1JyKgxAjqx41zp9qlIAVFi0IhCNsJcXolEqLWhbFbEeL0PvYm4pcQ==}
 
-  '@types/node@25.1.0':
-    resolution: {integrity: sha512-t7frlewr6+cbx+9Ohpl0NOTKXZNV9xHRmNOvql47BFJKcEG1CxtxlPEEe+gR9uhVWM4DwhnvTF110mIL4yP9RA==}
+  '@types/node@25.3.3':
+    resolution: {integrity: sha512-DpzbrH7wIcBaJibpKo9nnSQL0MTRdnWttGyE5haGwK86xgMOkFLp7vEyfQPGLOJh5wNYiJ3V9PmUMDhV9u8kkQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4741,8 +4741,8 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
-  undici-types@7.16.0:
-    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+  undici-types@7.18.2:
+    resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
   undici@5.28.4:
     resolution: {integrity: sha512-72RFADWFqKmUb2hmmvNODKL3p9hcB6Gt2DOQMis1SEBaV6a4MH8soBvzg+95CYhCKPFedut2JY9bMfrDl9D23g==}
@@ -5087,11 +5087,11 @@ snapshots:
 
   '@colors/colors@1.6.0': {}
 
-  '@commitlint/cli@20.4.2(@types/node@25.1.0)(typescript@5.9.3)':
+  '@commitlint/cli@20.4.2(@types/node@25.3.3)(typescript@5.9.3)':
     dependencies:
       '@commitlint/format': 20.4.0
       '@commitlint/lint': 20.4.2
-      '@commitlint/load': 20.4.0(@types/node@25.1.0)(typescript@5.9.3)
+      '@commitlint/load': 20.4.0(@types/node@25.3.3)(typescript@5.9.3)
       '@commitlint/read': 20.4.0
       '@commitlint/types': 20.4.0
       tinyexec: 1.0.2
@@ -5145,7 +5145,7 @@ snapshots:
       '@commitlint/rules': 20.4.2
       '@commitlint/types': 20.4.0
 
-  '@commitlint/load@19.8.1(@types/node@25.1.0)(typescript@5.9.3)':
+  '@commitlint/load@19.8.1(@types/node@25.3.3)(typescript@5.9.3)':
     dependencies:
       '@commitlint/config-validator': 19.8.1
       '@commitlint/execute-rule': 19.8.1
@@ -5153,7 +5153,7 @@ snapshots:
       '@commitlint/types': 19.8.1
       chalk: 5.6.2
       cosmiconfig: 9.0.0(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.1.0(@types/node@25.1.0)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig-typescript-loader: 6.1.0(@types/node@25.3.3)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -5161,14 +5161,14 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/load@20.4.0(@types/node@25.1.0)(typescript@5.9.3)':
+  '@commitlint/load@20.4.0(@types/node@25.3.3)(typescript@5.9.3)':
     dependencies:
       '@commitlint/config-validator': 20.4.0
       '@commitlint/execute-rule': 20.0.0
       '@commitlint/resolve-extends': 20.4.0
       '@commitlint/types': 20.4.0
       cosmiconfig: 9.0.0(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.2.0(@types/node@25.1.0)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig-typescript-loader: 6.2.0(@types/node@25.3.3)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
       is-plain-obj: 4.1.0
       lodash.mergewith: 4.6.2
       picocolors: 1.1.1
@@ -6062,7 +6062,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
-      '@types/node': 25.1.0
+      '@types/node': 25.3.3
 
   '@types/debug@4.1.12':
     dependencies:
@@ -6073,7 +6073,7 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 25.1.0
+      '@types/node': 25.3.3
 
   '@types/json-schema@7.0.15': {}
 
@@ -6081,7 +6081,7 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 25.1.0
+      '@types/node': 25.3.3
 
   '@types/katex@0.16.7': {}
 
@@ -6101,9 +6101,9 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@25.1.0':
+  '@types/node@25.3.3':
     dependencies:
-      undici-types: 7.16.0
+      undici-types: 7.18.2
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -6900,10 +6900,10 @@ snapshots:
 
   commander@8.3.0: {}
 
-  commitizen@4.3.1(@types/node@25.1.0)(typescript@5.9.3):
+  commitizen@4.3.1(@types/node@25.3.3)(typescript@5.9.3):
     dependencies:
       cachedir: 2.3.0
-      cz-conventional-changelog: 3.3.0(@types/node@25.1.0)(typescript@5.9.3)
+      cz-conventional-changelog: 3.3.0(@types/node@25.3.3)(typescript@5.9.3)
       dedent: 0.7.0
       detect-indent: 6.1.0
       find-node-modules: 2.1.3
@@ -6982,16 +6982,16 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig-typescript-loader@6.1.0(@types/node@25.1.0)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
+  cosmiconfig-typescript-loader@6.1.0(@types/node@25.3.3)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      '@types/node': 25.1.0
+      '@types/node': 25.3.3
       cosmiconfig: 9.0.0(typescript@5.9.3)
       jiti: 2.4.2
       typescript: 5.9.3
 
-  cosmiconfig-typescript-loader@6.2.0(@types/node@25.1.0)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
+  cosmiconfig-typescript-loader@6.2.0(@types/node@25.3.3)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      '@types/node': 25.1.0
+      '@types/node': 25.3.3
       cosmiconfig: 9.0.0(typescript@5.9.3)
       jiti: 2.6.1
       typescript: 5.9.3
@@ -7020,13 +7020,13 @@ snapshots:
     dependencies:
       type-fest: 1.4.0
 
-  cz-conventional-changelog-cmyr@2.0.0(@types/node@25.1.0)(commitizen@4.3.1(@types/node@25.1.0)(typescript@5.9.3))(typescript@5.9.3):
+  cz-conventional-changelog-cmyr@2.0.0(@types/node@25.3.3)(commitizen@4.3.1(@types/node@25.3.3)(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      '@commitlint/load': 19.8.1(@types/node@25.1.0)(typescript@5.9.3)
+      '@commitlint/load': 19.8.1(@types/node@25.3.3)(typescript@5.9.3)
       '@commitlint/types': 19.8.1
       '@lint-md/core': 2.0.0
       chalk: 4.1.2
-      commitizen: 4.3.1(@types/node@25.1.0)(typescript@5.9.3)
+      commitizen: 4.3.1(@types/node@25.3.3)(typescript@5.9.3)
       conventional-commit-types: 3.0.0
       longest: 2.0.1
       word-wrap: 1.2.5
@@ -7035,16 +7035,16 @@ snapshots:
       - supports-color
       - typescript
 
-  cz-conventional-changelog@3.3.0(@types/node@25.1.0)(typescript@5.9.3):
+  cz-conventional-changelog@3.3.0(@types/node@25.3.3)(typescript@5.9.3):
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.3.1(@types/node@25.1.0)(typescript@5.9.3)
+      commitizen: 4.3.1(@types/node@25.3.3)(typescript@5.9.3)
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
       word-wrap: 1.2.5
     optionalDependencies:
-      '@commitlint/load': 20.4.0(@types/node@25.1.0)(typescript@5.9.3)
+      '@commitlint/load': 20.4.0(@types/node@25.3.3)(typescript@5.9.3)
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -10103,7 +10103,7 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  undici-types@7.16.0: {}
+  undici-types@7.18.2: {}
 
   undici@5.28.4:
     dependencies:
