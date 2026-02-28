@@ -49,8 +49,8 @@ importers:
         specifier: ^25.3.3
         version: 25.3.3
       '@vercel/nft':
-        specifier: ^1.3.0
-        version: 1.3.0(rollup@4.53.3)
+        specifier: ^1.3.2
+        version: 1.3.2(rollup@4.53.3)
       commitizen:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@25.3.3)(typescript@5.9.3)
@@ -1709,6 +1709,11 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
+  '@vercel/nft@1.3.2':
+    resolution: {integrity: sha512-HC8venRc4Ya7vNeBsJneKHHMDDWpQie7VaKhAIOst3MKO+DES+Y/SbzSp8mFkD7OzwAE2HhHkeSuSmwS20mz3A==}
+    engines: {node: '>=20'}
+    hasBin: true
+
   '@vercel/node@5.6.9':
     resolution: {integrity: sha512-SiLToxNIGNSaELFhMorNAWIW1LkBCOEIw7+P3MxDxeaY9RAn5nqymT4uLg95L94JvI4dAFZbdfS7ntgmEfB64A==}
 
@@ -1749,11 +1754,6 @@ packages:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
-
-  acorn@8.15.0:
-    resolution: {integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
 
   acorn@8.16.0:
     resolution: {integrity: sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw==}
@@ -2866,10 +2866,6 @@ packages:
     resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
     engines: {node: '>=10.13.0'}
 
-  glob@13.0.0:
-    resolution: {integrity: sha512-tvZgpqk6fz4BaNZ66ZsRaZnbHvP/jG3uKJvAZOwEVUL4RTA5nJeeLYfyN9/VA8NX/V3IBG+hkeuGpKjvELkVhA==}
-    engines: {node: 20 || >=22}
-
   glob@13.0.6:
     resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
     engines: {node: 18 || 20 || >=22}
@@ -3696,10 +3692,6 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-  minipass@7.1.2:
-    resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
-    engines: {node: '>=16 || 14 >=14.17'}
-
   minipass@7.1.3:
     resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -4104,10 +4096,6 @@ packages:
 
   path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
-
-  path-scurry@2.0.1:
-    resolution: {integrity: sha512-oWyT4gICAu+kaA7QWk/jvCHWarMKNs6pXOGWKDTr7cw4IGcUbW+PeTfbaQiLGheFRpjo6O9J0PmyMfQPjH71oA==}
-    engines: {node: 20 || >=22}
 
   path-scurry@2.0.2:
     resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
@@ -4689,6 +4677,10 @@ packages:
     resolution: {integrity: sha512-fov56fJiRuThVFXD6o6/Q354S7pnWMJIVlDBYijsTNx6jKSE4pvrDTs6lUnmGvNyfJwFQQwWy3owKz1ucIhveQ==}
     engines: {node: '>=18'}
     deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+  tar@7.5.9:
+    resolution: {integrity: sha512-BTLcK0xsDh2+PUe9F6c2TlRp4zOOBMTkoQHQIWSIzI0R7KG46uEwq4OPk2W7bZcprBMsuaeFsqwYr7pjh6CuHg==}
+    engines: {node: '>=18'}
 
   temp-dir@3.0.0:
     resolution: {integrity: sha512-nHc6S/bwIilKHNRgK/3jlhDoIHcp45YgyiwcAk46Tr0LfEqGBVpmiAyuiuxeVE44m3mXnEeVhaipLOEWmH+Njw==}
@@ -5866,8 +5858,8 @@ snapshots:
       https-proxy-agent: 7.0.6
       node-fetch: 2.7.0
       nopt: 8.1.0
-      semver: 7.7.3
-      tar: 7.5.7
+      semver: 7.7.4
+      tar: 7.5.9
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -6637,12 +6629,31 @@ snapshots:
     dependencies:
       '@mapbox/node-pre-gyp': 2.0.3
       '@rollup/pluginutils': 5.3.0(rollup@4.53.3)
-      acorn: 8.15.0
-      acorn-import-attributes: 1.9.5(acorn@8.15.0)
+      acorn: 8.16.0
+      acorn-import-attributes: 1.9.5(acorn@8.16.0)
       async-sema: 3.1.1
       bindings: 1.5.0
       estree-walker: 2.0.2
-      glob: 13.0.0
+      glob: 13.0.6
+      graceful-fs: 4.2.11
+      node-gyp-build: 4.8.4
+      picomatch: 4.0.3
+      resolve-from: 5.0.0
+    transitivePeerDependencies:
+      - encoding
+      - rollup
+      - supports-color
+
+  '@vercel/nft@1.3.2(rollup@4.53.3)':
+    dependencies:
+      '@mapbox/node-pre-gyp': 2.0.3
+      '@rollup/pluginutils': 5.3.0(rollup@4.53.3)
+      acorn: 8.16.0
+      acorn-import-attributes: 1.9.5(acorn@8.16.0)
+      async-sema: 3.1.1
+      bindings: 1.5.0
+      estree-walker: 2.0.2
+      glob: 13.0.6
       graceful-fs: 4.2.11
       node-gyp-build: 4.8.4
       picomatch: 4.0.3
@@ -6742,19 +6753,13 @@ snapshots:
 
   abbrev@3.0.1: {}
 
-  acorn-import-attributes@1.9.5(acorn@8.15.0):
-    dependencies:
-      acorn: 8.15.0
-
   acorn-import-attributes@1.9.5(acorn@8.16.0):
     dependencies:
       acorn: 8.16.0
 
-  acorn-jsx@5.3.2(acorn@8.15.0):
+  acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:
-      acorn: 8.15.0
-
-  acorn@8.15.0: {}
+      acorn: 8.16.0
 
   acorn@8.16.0: {}
 
@@ -7728,8 +7733,8 @@ snapshots:
 
   espree@10.4.0:
     dependencies:
-      acorn: 8.15.0
-      acorn-jsx: 5.3.2(acorn@8.15.0)
+      acorn: 8.16.0
+      acorn-jsx: 5.3.2(acorn@8.16.0)
       eslint-visitor-keys: 4.2.1
 
   esprima@4.0.1: {}
@@ -8082,12 +8087,6 @@ snapshots:
   glob-parent@6.0.2:
     dependencies:
       is-glob: 4.0.3
-
-  glob@13.0.0:
-    dependencies:
-      minimatch: 10.1.1
-      minipass: 7.1.2
-      path-scurry: 2.0.1
 
   glob@13.0.6:
     dependencies:
@@ -9062,8 +9061,6 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  minipass@7.1.2: {}
-
   minipass@7.1.3: {}
 
   minizlib@3.1.0:
@@ -9074,7 +9071,7 @@ snapshots:
 
   mlly@1.8.0:
     dependencies:
-      acorn: 8.15.0
+      acorn: 8.16.0
       pathe: 2.0.3
       pkg-types: 1.3.1
       ufo: 1.6.1
@@ -9141,7 +9138,7 @@ snapshots:
   normalize-package-data@8.0.0:
     dependencies:
       hosted-git-info: 9.0.2
-      semver: 7.7.3
+      semver: 7.7.4
       validate-npm-package-license: 3.0.4
 
   normalize-url@8.1.1: {}
@@ -9397,11 +9394,6 @@ snapshots:
   path-key@4.0.0: {}
 
   path-parse@1.0.7: {}
-
-  path-scurry@2.0.1:
-    dependencies:
-      lru-cache: 11.2.6
-      minipass: 7.1.2
 
   path-scurry@2.0.2:
     dependencies:
@@ -10126,6 +10118,14 @@ snapshots:
   tagged-tag@1.0.0: {}
 
   tar@7.5.7:
+    dependencies:
+      '@isaacs/fs-minipass': 4.0.1
+      chownr: 3.0.0
+      minipass: 7.1.3
+      minizlib: 3.1.0
+      yallist: 5.0.0
+
+  tar@7.5.9:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
