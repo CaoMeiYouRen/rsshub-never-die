@@ -35,7 +35,8 @@
     "dev:vercel": "vercel dev",
     "deploy:vercel": "vercel",
     "dev:wrangler": "wrangler dev --env dev",
-    "deploy:wrangler": "wrangler deploy"
+    "deploy:wrangler": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260228.1",
@@ -107,6 +108,7 @@
     },
     "onlyBuiltDependencies": [
       "esbuild",
+      "sharp",
       "workerd"
     ]
   },

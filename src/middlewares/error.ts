@@ -1,7 +1,7 @@
 import { Context } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import { ErrorHandler, HTTPResponseError, NotFoundHandler } from 'hono/types'
-import { StatusCode } from 'hono/utils/http-status'
+import { ContentfulStatusCode } from 'hono/utils/http-status'
 import logger from '@/middlewares/logger'
 
 export const errorhandler: ErrorHandler = (error: HTTPResponseError, c: Context) => {
@@ -14,10 +14,11 @@ export const errorhandler: ErrorHandler = (error: HTTPResponseError, c: Context)
     const method = c.req.method
     const requestPath = c.req.path
     logger.error(`Error in ${method} ${requestPath}: \n${message}`)
+    const responseStatus = [101, 204, 205, 304].includes(status) ? 500 : status as ContentfulStatusCode
     return c.json({
         status,
         message,
-    }, status as StatusCode)
+    }, responseStatus)
 }
 
 export const notFoundHandler: NotFoundHandler = (c: Context) => {
