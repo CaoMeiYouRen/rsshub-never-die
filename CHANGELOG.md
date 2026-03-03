@@ -1,5 +1,13 @@
 # rsshub-never-die
 
+## [1.3.1](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.3.0...v1.3.1) (2026-03-03)
+
+
+### 🐛 Bug 修复
+
+* 更新错误处理中状态码的类型，确保返回正确的响应状态 ([33fe1b4](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/33fe1b4))
+* 移除 NodeConfig 中的 priority 和 backup 属性，简化节点配置逻辑 ([a4b60de](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/a4b60de))
+
 # [1.3.0](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.2.1...v1.3.0) (2026-03-03)
 
 
