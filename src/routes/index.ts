@@ -98,6 +98,9 @@ app.get('*', async (c) => {
     if (MODE === 'quickresponse') {
         // 快速响应：并发请求主节点池中的所有节点，返回最快的成功响应（备用节点不参与）
         const nodeUrls = poolNodes.map(makeUrl)
+        if (nodeUrls.length === 0) {
+            throw new HTTPException(500, { message: 'No RSSHub nodes available' })
+        }
         const res = await Promise.any(nodeUrls.map(async (url) => {
             const resp = await fetchWithStatusCheck(url)
             const contentType = resp.headers.get('Content-Type') || 'application/xml'
