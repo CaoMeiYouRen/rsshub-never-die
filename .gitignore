@@ -42,3 +42,4 @@ temp
 .dev.vars
 
 .vercel
+package-lock.json
