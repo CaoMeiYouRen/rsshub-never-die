@@ -45,10 +45,11 @@ app.get('*', async (c) => {
         return _url.toString()
     }
 
-    // 构建主节点池：必选节点全部包含，剩余位置按权重随机填充普通节点（上限 MAX_NODE_NUM）
-    const regularCount = Math.max(0, MAX_NODE_NUM - priorityNodes.length)
+    // 构建主节点池：在总数不超过 MAX_NODE_NUM 的前提下，优先选择必选节点，剩余位置按权重随机填充普通节点
+    const priorityPickCount = Math.min(priorityNodes.length, MAX_NODE_NUM)
+    const regularCount = Math.max(0, MAX_NODE_NUM - priorityPickCount)
     const poolNodes = [
-        ...weightedRandomPick(priorityNodes, priorityNodes.length),
+        ...weightedRandomPick(priorityNodes, priorityPickCount),
         ...weightedRandomPick(regularNodes, regularCount),
     ]
 
