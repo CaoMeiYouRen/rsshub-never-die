@@ -6,8 +6,8 @@ import { Bindings } from '../types'
 import { fetchWithStatusCheck, md5, NodeConfig, parseNodeUrls, weightedRandomPick } from '@/utils/helper'
 import logger from '@/middlewares/logger'
 
-// 官方实例，默认以必选节点方式加入
-const DEFAULT_NODE: NodeConfig = { url: 'https://rsshub.app', weight: 1, priority: true, backup: false }
+// 官方实例，默认加入节点池
+const DEFAULT_NODE: NodeConfig = { url: 'https://rsshub.app', weight: 1 }
 
 const app = new Hono<{ Bindings: Bindings }>()
 
@@ -28,39 +28,37 @@ app.get('*', async (c) => {
     }
 
     const parsedNodes = parseNodeUrls(RSSHUB_NODE_URLS)
-    // 若用户未显式配置默认节点，则自动将其作为必选节点添加到队列首位
+    // 若用户未显式配置默认节点，则自动添加到节点池
     const hasDefaultNode = parsedNodes.some((n) => n.url === DEFAULT_NODE.url)
     const allNodes = hasDefaultNode ? parsedNodes : [DEFAULT_NODE, ...parsedNodes]
 
-    // 按类型分组
-    const priorityNodes = allNodes.filter((n) => n.priority && !n.backup) // 必选节点：优先使用
-    const regularNodes = allNodes.filter((n) => !n.priority && !n.backup) // 普通节点：按权重随机选择
-    const backupNodes = allNodes.filter((n) => n.backup) // 备用节点：仅在其他节点全部失败后使用
-
     // 将 NodeConfig 转换为带路径和查询参数的完整 URL
     const makeUrl = (node: NodeConfig) => {
-        const _url = new URL(node.url)
-        _url.pathname = path
-        _url.search = new URLSearchParams(otherQuery).toString()
-        return _url.toString()
+        try {
+            const _url = new URL(node.url)
+            _url.pathname = path
+            _url.search = new URLSearchParams(otherQuery).toString()
+            return _url.toString()
+        } catch (error) {
+            logger.error(`Invalid RSSHub node url: ${node.url}`)
+            logger.error(error)
+            return null
+        }
     }
 
-    // 构建主节点池：在总数不超过 MAX_NODE_NUM 的前提下，优先选择必选节点，剩余位置按权重随机填充普通节点
-    const priorityPickCount = Math.min(priorityNodes.length, MAX_NODE_NUM)
-    const regularCount = Math.max(0, MAX_NODE_NUM - priorityPickCount)
-    const poolNodes = [
-        ...weightedRandomPick(priorityNodes, priorityPickCount),
-        ...weightedRandomPick(regularNodes, regularCount),
-    ]
+    // 节点池：按权重抽样，且总数不超过 MAX_NODE_NUM
+    const poolNodes = weightedRandomPick(allNodes, Math.min(allNodes.length, MAX_NODE_NUM))
 
     if (MODE === 'loadbalance') {
-        // 负载均衡模式：从所有非备用节点中按权重随机选择一个节点
-        const candidates = [...priorityNodes, ...regularNodes]
-        const selectedNode = weightedRandomPick(candidates, 1)[0]
+        // 负载均衡模式：从所有节点中按权重随机选择一个节点
+        const selectedNode = weightedRandomPick(allNodes, 1)[0]
         if (!selectedNode) {
             throw new HTTPException(500, { message: 'No RSSHub nodes available' })
         }
         const nodeUrl = makeUrl(selectedNode)
+        if (!nodeUrl) {
+            throw new HTTPException(500, { message: 'No valid RSSHub nodes available' })
+        }
         const res = await fetchWithStatusCheck(nodeUrl)
         const data = await res.text()
         const contentType = res.headers.get('Content-Type') || 'application/xml'
@@ -69,11 +67,13 @@ app.get('*', async (c) => {
         return c.body(data)
     }
     if (MODE === 'failover') {
-        // 自动容灾：依次尝试必选节点、普通节点，最后才尝试备用节点
-        // 普通节点按权重随机排列，确保高权重节点更早被尝试
-        const orderedNodes = [...poolNodes, ...backupNodes]
+        // 自动容灾：按权重随机顺序依次尝试节点（不放回）
+        const orderedNodes = poolNodes
         for (const node of orderedNodes) {
             const nodeUrl = makeUrl(node)
+            if (!nodeUrl) {
+                continue
+            }
             try {
                 const res = await fetchWithStatusCheck(nodeUrl)
                 const data = await res.text()
@@ -96,8 +96,10 @@ app.get('*', async (c) => {
     }
 
     if (MODE === 'quickresponse') {
-        // 快速响应：并发请求主节点池中的所有节点，返回最快的成功响应（备用节点不参与）
-        const nodeUrls = poolNodes.map(makeUrl)
+        // 快速响应：并发请求节点池中的所有节点，返回最快的成功响应
+        const nodeUrls = poolNodes
+            .map(makeUrl)
+            .filter((url): url is string => Boolean(url))
         if (nodeUrls.length === 0) {
             throw new HTTPException(500, { message: 'No RSSHub nodes available' })
         }

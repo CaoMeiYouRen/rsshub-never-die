@@ -20,10 +20,6 @@ export interface NodeConfig {
     url: string
     /** 权重，默认为 1，数字越大被选中的概率越高 */
     weight: number
-    /** 必选实例：优先使用，始终包含在请求池中 */
-    priority: boolean
-    /** 备用实例：当所有其他实例均失败时才使用（仅在 failover 模式下有效） */
-    backup: boolean
 }
 
 /**
@@ -31,10 +27,10 @@ export interface NodeConfig {
  *
  * 支持以下格式（多个选项以竖线分隔）：
  *   https://example.com                  普通实例（权重=1）
- *   https://example.com|priority         必选实例，优先使用
- *   https://example.com|backup           备用实例，所有其他实例失败后才使用
  *   https://example.com|weight=3         设置权重为 3
- *   https://example.com|priority|weight=2  必选且权重为 2
+ *
+ * 兼容说明：
+ *   旧版 `priority` / `backup` 标记会被忽略，仅保留权重行为。
  *
  * @author CaoMeiYouRen
  * @date 2024-10-24
@@ -55,19 +51,13 @@ export function parseNodeUrls(value: string): NodeConfig[] {
         }
         seen.add(url)
         let weight = 1
-        let priority = false
-        let backup = false
         for (const part of parts.slice(1)) {
             const weightMatch = part.match(/^weight=(\d+)$/)
             if (weightMatch) {
                 weight = Math.max(1, parseInt(weightMatch[1]))
-            } else if (part === 'priority') {
-                priority = true
-            } else if (part === 'backup') {
-                backup = true
             }
         }
-        result.push({ url, weight, priority, backup })
+        result.push({ url, weight })
     }
     return result
 }
