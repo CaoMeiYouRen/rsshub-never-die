@@ -1,5 +1,18 @@
 # rsshub-never-die
 
+# [1.3.0](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.2.1...v1.3.0) (2026-03-03)
+
+
+### ✨ 新功能
+
+* 优化实例选择逻辑（必选、备用、权重） ([56b5b71](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/56b5b71))
+
+
+### 🐛 Bug 修复
+
+* cap poolNodes to MAX_NODE_NUM and guard quickresponse empty pool ([122543e](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/122543e))
+* update src/routes/index.ts ([1c329e9](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/1c329e9))
+
 ## [1.2.1](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.2.0...v1.2.1) (2025-02-10)
 
 
