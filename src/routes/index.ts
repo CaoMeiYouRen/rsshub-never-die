@@ -3,8 +3,11 @@ import { env } from 'hono/adapter'
 import { StatusCode } from 'hono/utils/http-status'
 import { HTTPException } from 'hono/http-exception'
 import { Bindings } from '../types'
-import { fetchWithStatusCheck, md5, parseNodeUrls, randomPick } from '@/utils/helper'
+import { fetchWithStatusCheck, md5, NodeConfig, parseNodeUrls, weightedRandomPick } from '@/utils/helper'
 import logger from '@/middlewares/logger'
+
+// 官方实例，默认以必选节点方式加入
+const DEFAULT_NODE: NodeConfig = { url: 'https://rsshub.app', weight: 1, priority: true, backup: false }
 
 const app = new Hono<{ Bindings: Bindings }>()
 
@@ -23,18 +26,40 @@ app.get('*', async (c) => {
             throw new HTTPException(403, { message: 'Auth code is invalid' })
         }
     }
-    const allNodeUrls = parseNodeUrls(RSSHUB_NODE_URLS)
-    // 由于 Cloudflare Workers 的限制，fetch 一次最多并发 6 个，所以最多随机选择 5 个节点。
-    // 添加默认节点，官方实例默认为第一个。然后随机选择5个节点（不包括默认节点）。
-    const nodeUrls = ['https://rsshub.app', ...randomPick(allNodeUrls, MAX_NODE_NUM - 1)].map((url) => {
-        const _url = new URL(url)
+
+    const parsedNodes = parseNodeUrls(RSSHUB_NODE_URLS)
+    // 若用户未显式配置默认节点，则自动将其作为必选节点添加到队列首位
+    const hasDefaultNode = parsedNodes.some((n) => n.url === DEFAULT_NODE.url)
+    const allNodes = hasDefaultNode ? parsedNodes : [DEFAULT_NODE, ...parsedNodes]
+
+    // 按类型分组
+    const priorityNodes = allNodes.filter((n) => n.priority && !n.backup) // 必选节点：优先使用
+    const regularNodes = allNodes.filter((n) => !n.priority && !n.backup) // 普通节点：按权重随机选择
+    const backupNodes = allNodes.filter((n) => n.backup) // 备用节点：仅在其他节点全部失败后使用
+
+    // 将 NodeConfig 转换为带路径和查询参数的完整 URL
+    const makeUrl = (node: NodeConfig) => {
+        const _url = new URL(node.url)
         _url.pathname = path
         _url.search = new URLSearchParams(otherQuery).toString()
         return _url.toString()
-    })
+    }
+
+    // 构建主节点池：必选节点全部包含，剩余位置按权重随机填充普通节点（上限 MAX_NODE_NUM）
+    const regularCount = Math.max(0, MAX_NODE_NUM - priorityNodes.length)
+    const poolNodes = [
+        ...weightedRandomPick(priorityNodes, priorityNodes.length),
+        ...weightedRandomPick(regularNodes, regularCount),
+    ]
+
     if (MODE === 'loadbalance') {
-        // 负载均衡模式，随机选择一个节点
-        const nodeUrl = randomPick(nodeUrls, 1)[0]
+        // 负载均衡模式：从所有非备用节点中按权重随机选择一个节点
+        const candidates = [...priorityNodes, ...regularNodes]
+        const selectedNode = weightedRandomPick(candidates, 1)[0]
+        if (!selectedNode) {
+            throw new HTTPException(500, { message: 'No RSSHub nodes available' })
+        }
+        const nodeUrl = makeUrl(selectedNode)
         const res = await fetchWithStatusCheck(nodeUrl)
         const data = await res.text()
         const contentType = res.headers.get('Content-Type') || 'application/xml'
@@ -43,13 +68,11 @@ app.get('*', async (c) => {
         return c.body(data)
     }
     if (MODE === 'failover') {
-        // 自动容灾：自动容灾模式下，会随机选择一个 RSSHub 实例进行请求。如果请求成功，则返回给客户端。如果请求失败，则会选择下一个实例进行请求。如果所有实例都失败，则返回给客户端错误。
-        while (nodeUrls.length > 0) {
-            // 随机选择一个节点
-            const nodeUrl = randomPick(nodeUrls, 1)[0]
-            // 移除这个节点
-            nodeUrls.splice(nodeUrls.indexOf(nodeUrl), 1)
-
+        // 自动容灾：依次尝试必选节点、普通节点，最后才尝试备用节点
+        // 普通节点按权重随机排列，确保高权重节点更早被尝试
+        const orderedNodes = [...poolNodes, ...backupNodes]
+        for (const node of orderedNodes) {
+            const nodeUrl = makeUrl(node)
             try {
                 const res = await fetchWithStatusCheck(nodeUrl)
                 const data = await res.text()
@@ -72,8 +95,8 @@ app.get('*', async (c) => {
     }
 
     if (MODE === 'quickresponse') {
-        // 快速响应：会随机选择多个 RSSHub 实例进行请求。并返回最快的成功响应。如果全部失败，则则返回给客户端错误。
-        // 并发请求，有一个成功就返回值
+        // 快速响应：并发请求主节点池中的所有节点，返回最快的成功响应（备用节点不参与）
+        const nodeUrls = poolNodes.map(makeUrl)
         const res = await Promise.any(nodeUrls.map(async (url) => {
             const resp = await fetchWithStatusCheck(url)
             const contentType = resp.headers.get('Content-Type') || 'application/xml'
