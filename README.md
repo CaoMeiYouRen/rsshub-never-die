@@ -66,6 +66,10 @@ MAX_BODY_SIZE = 104857600
 CACHE_MAX_AGE = 300
 # RSSHub 实例 的 URL 地址，使用英文逗号分隔。
 # 官方实例 https://rsshub.app 不用列出，默认添加。
+# 每个实例可以通过竖线(|)分隔的参数进行配置：
+#   |priority  - 必选实例：优先使用，始终包含在请求池中
+#   |backup    - 备用实例：当所有其他实例均失败时才使用（仅在 failover 模式下有效）
+#   |weight=N  - 设置权重（默认为 1，数字越大被选中的概率越高）
 RSSHUB_NODE_URLS = 'https://rsshub.rssforever.com, https://hub.slarker.me, https://rsshub.pseudoyu.com, https://rsshub.ktachibana.party, https://rsshub.woodland.cafe, https://rss.owo.nz, https://yangzhi.app, https://rsshub.henry.wang, https://rss.peachyjoy.top, https://rsshub.speednet.icu'
 # 最大实例节点数，默认为 6
 MAX_NODE_NUM=6
@@ -192,6 +196,12 @@ LOGFILES=false
 
 # RSSHub 实例 的 URL 地址，使用英文逗号分隔。
 # 官方实例 https://rsshub.app 不用列出，默认添加。
+# 每个实例可以通过竖线(|)分隔的参数进行配置：
+#   |priority  - 必选实例：优先使用，始终包含在请求池中
+#   |backup    - 备用实例：当所有其他实例均失败时才使用（仅在 failover 模式下有效）
+#   |weight=N  - 设置权重（默认为 1，数字越大被选中的概率越高）
+# 示例：
+# RSSHUB_NODE_URLS='https://rsshub.rssforever.com|priority, https://hub.slarker.me|weight=3, https://rsshub.pseudoyu.com|backup'
 RSSHUB_NODE_URLS='https://rsshub.rssforever.com, https://hub.slarker.me, https://rsshub.pseudoyu.com, https://rsshub.ktachibana.party, https://rsshub.woodland.cafe, https://rss.owo.nz, https://yangzhi.app, https://rsshub.henry.wang, https://rss.peachyjoy.top, https://rsshub.speednet.icu'
 
 # 最大实例节点数，默认为 6
