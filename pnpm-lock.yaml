@@ -31,8 +31,8 @@ importers:
         version: 5.0.0(winston@3.19.0)
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: ^4.20260228.1
-        version: 4.20260228.1
+        specifier: ^4.20260331.1
+        version: 4.20260331.1
       '@commitlint/cli':
         specifier: ^20.4.2
         version: 20.4.2(@types/node@25.3.3)(typescript@5.9.3)
@@ -101,7 +101,7 @@ importers:
         version: 50.25.4(rollup@4.53.3)(typescript@5.9.3)
       wrangler:
         specifier: ^4.67.0
-        version: 4.67.0(@cloudflare/workers-types@4.20260228.1)
+        version: 4.67.0(@cloudflare/workers-types@4.20260331.1)
 
 packages:
 
@@ -171,8 +171,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@4.20260228.1':
-    resolution: {integrity: sha512-gTpLuST3b1gdQfp+u1yiMavoE+n1g1CXuHeiDtlChOePVje+R/V92k6JeEY+6o9qVmQpHzluMe9j/OwvRJuCUg==}
+  '@cloudflare/workers-types@4.20260331.1':
+    resolution: {integrity: sha512-fsf+MWPQdQ8XPV0y3tQvqf035ETgEXfJgNTYqmiLcOHB32eH/5Kb75fyZIXS9nnBMq3x6c4+HJRTRxbovNLWiA==}
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -2856,6 +2856,7 @@ packages:
   git-raw-commits@4.0.0:
     resolution: {integrity: sha512-ICsMM1Wk8xSGMowkOmPrzo2Fgmfo4bMHLNX6ytHjajRJUqvHOw/TFapQ+QG75c3X/tTDDhOSRPGC52dDbNM8FQ==}
     engines: {node: '>=16'}
+    deprecated: This package is no longer maintained. For the JavaScript API, please use @conventional-changelog/git-client instead.
     hasBin: true
 
   glob-parent@5.1.2:
@@ -5213,7 +5214,7 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20260219.0':
     optional: true
 
-  '@cloudflare/workers-types@4.20260228.1': {}
+  '@cloudflare/workers-types@4.20260331.1': {}
 
   '@colors/colors@1.5.0':
     optional: true
@@ -10580,7 +10581,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20260219.0
       '@cloudflare/workerd-windows-64': 1.20260219.0
 
-  wrangler@4.67.0(@cloudflare/workers-types@4.20260228.1):
+  wrangler@4.67.0(@cloudflare/workers-types@4.20260331.1):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.2
       '@cloudflare/unenv-preset': 2.14.0(unenv@2.0.0-rc.24)(workerd@1.20260219.0)
@@ -10591,7 +10592,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       workerd: 1.20260219.0
     optionalDependencies:
-      '@cloudflare/workers-types': 4.20260228.1
+      '@cloudflare/workers-types': 4.20260331.1
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil
