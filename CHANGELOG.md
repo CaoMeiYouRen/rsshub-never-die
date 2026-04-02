@@ -1,5 +1,12 @@
 # rsshub-never-die
 
+# [1.4.0](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.3.1...v1.4.0) (2026-04-02)
+
+
+### ✨ 新功能
+
+* **auth:** 更新认证逻辑和相关函数 ([b046b43](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/b046b43))
+
 ## [1.3.1](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.3.0...v1.3.1) (2026-03-03)
 
 
