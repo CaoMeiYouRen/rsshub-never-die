@@ -74,7 +74,8 @@ RSSHUB_NODE_URLS = 'https://rsshub.rssforever.com, https://hub.slarker.me, https
 MAX_NODE_NUM=6
 # 访问码，注意和 RSSHub 的 ACCESS_KEY 不是同一个。
 # 留空则不做限制
-# 启用后，在url中添加 authKey 参数即可，例如 authKey=yyyy
+# 启用后，请在 url 中提供 authKey 参数，或提供 authCode 参数。
+# authCode 的计算方式为 HMAC-SHA256(path, AUTH_KEY) 的十六进制字符串。
 AUTH_KEY=''
 # 运行模式，有三种模式，负载均衡、自动容灾、快速响应模式
 # 默认为负载均衡模式
@@ -212,7 +213,8 @@ CACHE_MAX_AGE=300
 
 # 访问码，注意和 RSSHub 的 ACCESS_KEY 不是同一个。
 # 留空则不做限制
-# 启用后，在url中添加 authKey 参数即可，例如 authKey=yyyy
+# 启用后，请在 url 中提供 authKey 参数，或提供 authCode 参数。
+# authCode 的计算方式为 HMAC-SHA256(path, AUTH_KEY) 的十六进制字符串。
 AUTH_KEY=''
 
 # 运行模式，有三种模式，负载均衡、自动容灾、快速响应模式

@@ -3,7 +3,7 @@ import { env } from 'hono/adapter'
 import { StatusCode } from 'hono/utils/http-status'
 import { HTTPException } from 'hono/http-exception'
 import { Bindings } from '../types'
-import { fetchWithStatusCheck, md5, NodeConfig, parseNodeUrls, weightedRandomPick } from '@/utils/helper'
+import { constantTimeEqual, createAuthCode, fetchWithStatusCheck, NodeConfig, parseNodeUrls, weightedRandomPick } from '@/utils/helper'
 import logger from '@/middlewares/logger'
 
 // 官方实例，默认加入节点池
@@ -18,11 +18,14 @@ app.get('*', async (c) => {
     const query = c.req.query()
     const { authKey, authCode, ...otherQuery } = query
     if (AUTH_KEY) {
-        if (authKey && authKey !== AUTH_KEY) { // 支持通过 authKey 验证
+        if (!authKey && !authCode) {
+            throw new HTTPException(403, { message: 'Auth key or auth code is required' })
+        }
+        if (authKey && !constantTimeEqual(authKey, AUTH_KEY)) { // 支持通过 authKey 验证
             throw new HTTPException(403, { message: 'Auth key is invalid' })
         }
-        const code = md5(path + AUTH_KEY)
-        if (authCode && authCode !== code) { // 支持通过 authCode 验证
+        const code = createAuthCode(path, AUTH_KEY)
+        if (authCode && !constantTimeEqual(authCode, code)) { // 支持通过 authCode 验证
             throw new HTTPException(403, { message: 'Auth code is invalid' })
         }
     }

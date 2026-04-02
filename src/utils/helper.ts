@@ -1,15 +1,34 @@
 import crypto from 'crypto'
 
 /**
- * 生成 MD5 哈希值
+ * 使用共享密钥为请求路径生成认证码
  *
  * @author CaoMeiYouRen
  * @date 2024-10-25
  * @export
- * @param str
+ * @param path
+ * @param authKey
  */
-export function md5(str: string) {
-    return crypto.createHash('md5').update(str).digest('hex')
+export function createAuthCode(path: string, authKey: string) {
+    return crypto.createHmac('sha256', authKey).update(path).digest('hex')
+}
+
+/**
+ * 常量时间比较，避免直接比较密钥类字符串
+ *
+ * @author CaoMeiYouRen
+ * @date 2026-04-03
+ * @export
+ * @param a
+ * @param b
+ */
+export function constantTimeEqual(a: string, b: string) {
+    const left = Buffer.from(a)
+    const right = Buffer.from(b)
+    if (left.length !== right.length) {
+        return false
+    }
+    return crypto.timingSafeEqual(left, right)
 }
 
 /**
