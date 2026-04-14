@@ -61,7 +61,7 @@
     "tsup": "^8.5.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vercel": "^50.38.3",
+    "vercel": "^51.2.1",
     "wrangler": "^4.79.0"
   },
   "config": {
@@ -104,8 +104,13 @@
   },
   "pnpm": {
     "overrides": {
+      "@tootallnate/once": "3.0.1",
       "brace-expansion@1.1.12": "1.1.13",
       "compare-func": "^2.0.0",
+      "ajv@6.12.6": "6.14.0",
+      "ajv@8.17.1": "8.18.0",
+      "ajv@8.6.3": "8.18.0",
+      "basic-ftp": "5.2.2",
       "flatted": "3.4.2",
       "handlebars": "4.7.9",
       "lodash": "4.18.1",
@@ -114,10 +119,12 @@
       "minimatch@10.1.1": "10.2.5",
       "path-to-regexp@8.2.0": "8.4.2",
       "path-to-regexp@8.3.0": "8.4.2",
+      "smol-toml": "1.6.1",
+      "tmp": "0.2.5",
       "rollup": "4.60.1",
       "srvx": "0.11.14",
       "tar@7.5.7": "7.5.13",
-      "undici@5.28.4": "5.29.0",
+      "undici@5.28.4": "6.24.1",
       "undici@7.19.2": "7.24.7"
     },
     "onlyBuiltDependencies": [
