@@ -39,7 +39,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260331.1",
+    "@cloudflare/workers-types": "^4.20260430.1",
     "@commitlint/cli": "^20.5.3",
     "@types/debug": "^4.1.13",
     "@types/fs-extra": "^11.0.4",
