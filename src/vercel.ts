@@ -1,4 +1,4 @@
-import { handle } from '@hono/node-server/vercel'
+import { handle } from 'hono/vercel'
 import { name } from '../package.json'
 import app from './app'
 import logger from './middlewares/logger'
