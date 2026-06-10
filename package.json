@@ -21,6 +21,7 @@
   "engines": {
     "node": ">=18"
   },
+  "packageManager": "pnpm@11.2.2",
   "scripts": {
     "lint": "cross-env NODE_ENV=production eslint . --fix --ext .ts,.js,.cjs,.mjs",
     "release": "semantic-release",
