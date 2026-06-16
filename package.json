@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260430.1",
-    "@commitlint/cli": "^20.5.3",
+    "@commitlint/cli": "^21.0.2",
     "@types/debug": "^4.1.13",
     "@types/fs-extra": "^11.0.4",
     "@types/lodash-es": "^4.17.12",
