@@ -1,3 +1,7 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
 overrides:
   handlebars: "^4.7.9"
   flatted: "^3.4.2"
