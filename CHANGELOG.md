@@ -1,5 +1,12 @@
 # rsshub-never-die
 
+## [1.4.1](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.4.0...v1.4.1) (2026-06-21)
+
+
+### 🐛 Bug 修复
+
+* **vercel:** 重构请求和响应处理逻辑 ([641a409](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/641a409))
+
 # [1.4.0](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.3.1...v1.4.0) (2026-04-02)
 
 
