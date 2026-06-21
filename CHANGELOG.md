@@ -1,5 +1,12 @@
 # rsshub-never-die
 
+## [1.4.2](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.4.1...v1.4.2) (2026-06-21)
+
+
+### 🐛 Bug 修复
+
+* **deps:** add overrides for high-severity transitive deps ([846dc8d](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/846dc8d)), closes [hi#severity](https://github.com/hi/issues/severity)
+
 ## [1.4.1](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.4.0...v1.4.1) (2026-06-21)
 
 
