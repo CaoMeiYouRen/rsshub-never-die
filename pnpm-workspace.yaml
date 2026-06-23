@@ -3,6 +3,7 @@ allowBuilds:
   sharp: true
   workerd: true
 overrides:
+  ini: ^1.3.6
   minimatch: ^10.2.3
   tar: ^7.5.16
   undici: ^7.28.0

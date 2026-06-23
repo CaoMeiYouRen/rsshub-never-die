@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  ini: ^1.3.6
   minimatch: ^10.2.3
   tar: ^7.5.16
   undici: ^7.28.0
@@ -3319,21 +3320,8 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  ini@1.3.0:
-    resolution: {integrity: sha512-6tyfJkFAmQV64x9Li007PNZgNxqRywig4Rv8PDfzU9kgDBmURaIvjSL2wKyx45LPSIXsvDkFGbOMqMHC1PsORA==}
-    deprecated: Please update to ini >=1.3.6 to avoid a prototype pollution issue
-
-  ini@1.3.4:
-    resolution: {integrity: sha512-VUA7WAWNCWfm6/8f9kAb8Y6iGBWnmCfgFS5dTrv2C38LLm1KUmpY388mCVCJCsMKQomvOQ1oW8/edXdChd9ZXQ==}
-    deprecated: Please update to ini >=1.3.6 to avoid a prototype pollution issue
-
-  ini@4.1.1:
-    resolution: {integrity: sha512-QQnnxNyfvmHFIsj7gkPcYymR8Jdw/o7mp5ZFihxn6h8Ci6fh3Dx4E1gPjpQEpIuPo9XVNY/ZUwh4BPMjGyL01g==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-
-  ini@6.0.0:
-    resolution: {integrity: sha512-IBTdIkzZNOpqm7q3dRqJvMaldXjDHWkEDfrwGEQTs5eaQMWV+djAhR+wahyNNMAa+qpbDUhBMVt4ZKNwpPm7xQ==}
-    engines: {node: ^20.17.0 || >=22.9.0}
+  ini@1.3.6:
+    resolution: {integrity: sha512-IZUoxEjNjubzrmvzZU4lKP7OnYmX72XRl3sqkfJhBKweKi5rnGi5+IUdlj/H1M+Ip5JQ1WzaDMOBRY90Ajc5jg==}
 
   inquirer@8.2.7:
     resolution: {integrity: sha512-UjOaSel/iddGZJ5xP/Eixh6dY1XghiBw4XK13rCCIJcJfyhhoul/7KhLLUGtebEj6GDYM6Vnx/mVsjx2L/mFIA==}
@@ -7678,7 +7666,7 @@ snapshots:
 
   config-chain@1.1.13:
     dependencies:
-      ini: 1.3.4
+      ini: 1.3.6
       proto-list: 1.2.4
 
   consola@3.4.2: {}
@@ -8674,11 +8662,11 @@ snapshots:
 
   global-directory@4.0.1:
     dependencies:
-      ini: 4.1.1
+      ini: 1.3.6
 
   global-directory@5.0.0:
     dependencies:
-      ini: 6.0.0
+      ini: 1.3.6
 
   global-modules@1.0.0:
     dependencies:
@@ -8690,7 +8678,7 @@ snapshots:
     dependencies:
       expand-tilde: 2.0.2
       homedir-polyfill: 1.0.3
-      ini: 1.3.4
+      ini: 1.3.6
       is-windows: 1.0.2
       which: 1.2.14
 
@@ -8867,13 +8855,7 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  ini@1.3.0: {}
-
-  ini@1.3.4: {}
-
-  ini@4.1.1: {}
-
-  ini@6.0.0: {}
+  ini@1.3.6: {}
 
   inquirer@8.2.7(@types/node@25.9.4):
     dependencies:
@@ -10252,7 +10234,7 @@ snapshots:
   rc@1.2.8:
     dependencies:
       deep-extend: 0.6.0
-      ini: 1.3.0
+      ini: 1.3.6
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
