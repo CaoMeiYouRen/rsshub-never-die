@@ -287,7 +287,13 @@ pnpm run commit
 
 ## 💰 支持
 
-如果觉得这个项目有用的话请给一颗⭐️，非常感谢
+如果觉得这个项目有用的话请给一颗⭐️，非常感谢。
+
+如需商业版支持、定制开发或赞助等，请通过 [爱发电](https://afdian.com/a/CaoMeiYouRen) 联系（可直接下单）。
+
+<a href="https://afdian.com/@CaoMeiYouRen">
+  <img src="https://oss.cmyr.dev/images/202306192324870.png" width="312px" height="78px" alt="在爱发电支持我">
+</a>
 
 ## 🌟 Star History
 
