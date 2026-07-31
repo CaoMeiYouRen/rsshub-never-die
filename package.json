@@ -61,7 +61,7 @@
     "semantic-release-cmyr-config": "^1.0.2",
     "tsup": "^8.5.1",
     "tsx": "^4.22.4",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "vercel": "^54.6.1",
     "wrangler": "^4.87.0"
   },
