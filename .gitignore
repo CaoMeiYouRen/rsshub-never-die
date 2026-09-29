@@ -43,3 +43,5 @@ temp
 
 .vercel
 package-lock.json
+# dependfix
+dependfix-reports/
