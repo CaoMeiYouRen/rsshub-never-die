@@ -23,6 +23,9 @@ overrides:
   esbuild: ^0.28.1
   smol-toml: ^1.7.1
   hono: ^4.13.5
+  ansi-regex@4: ^4.1.1
+  ansi-regex@5: ^5.0.1
+  dot-prop: ^5.1.1
 
 importers:
 
@@ -1740,17 +1743,9 @@ packages:
     resolution: {integrity: sha512-BvU8nYgGQBxcmMuEeUEmNTvrMVjJNSH7RgW24vXexN4Ven6qCvy4TntnvlnwnMLTVlcRQQdbRY8NKnaIoeWDNg==}
     engines: {node: '>=18'}
 
-  ansi-regex@4.0.0:
-    resolution: {integrity: sha512-iB5Dda8t/UqpPI/IjsejXu5jOGDrzn41wJyljwPH65VCIbk6+1BzFIMJGFwTNrYXT1CrD+B4l19U7awiQ8rk7w==}
+  ansi-regex@4.1.1:
+    resolution: {integrity: sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==}
     engines: {node: '>=6'}
-
-  ansi-regex@4.1.0:
-    resolution: {integrity: sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==}
-    engines: {node: '>=6'}
-
-  ansi-regex@5.0.0:
-    resolution: {integrity: sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==}
-    engines: {node: '>=8'}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -2277,8 +2272,8 @@ packages:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
     engines: {node: '>=0.10.0'}
 
-  dot-prop@5.1.0:
-    resolution: {integrity: sha512-n1oC6NBF+KM9oVXtjmen4Yo7HyAVWV2UUl50dCYJdw2924K6dX9bf9TTTWaKtYlRn0FEtxG27KS80ayVLixxJA==}
+  dot-prop@5.1.1:
+    resolution: {integrity: sha512-QCHI6Lkf+9fJMpwfAFsTvbiSh6ujoPmhCLiDvD/n4dGtLvHfhuBwPdN6z2x4YSOwwtTcLoO/LP70xELWGF/JVA==}
     engines: {node: '>=8'}
 
   dotenv@17.4.2:
@@ -6465,11 +6460,7 @@ snapshots:
     dependencies:
       environment: 1.1.0
 
-  ansi-regex@4.0.0: {}
-
-  ansi-regex@4.1.0: {}
-
-  ansi-regex@5.0.0: {}
+  ansi-regex@4.1.1: {}
 
   ansi-regex@5.0.1: {}
 
@@ -6792,7 +6783,7 @@ snapshots:
   compare-func@2.0.0:
     dependencies:
       array-ify: 1.0.0
-      dot-prop: 5.1.0
+      dot-prop: 5.1.1
 
   confbox@0.1.8: {}
 
@@ -6985,7 +6976,7 @@ snapshots:
     dependencies:
       esutils: 2.0.3
 
-  dot-prop@5.1.0:
+  dot-prop@5.1.1:
     dependencies:
       is-obj: 2.0.0
 
@@ -9186,15 +9177,15 @@ snapshots:
 
   strip-ansi@5.0.0:
     dependencies:
-      ansi-regex: 4.0.0
+      ansi-regex: 4.1.1
 
   strip-ansi@5.2.0:
     dependencies:
-      ansi-regex: 4.1.0
+      ansi-regex: 4.1.1
 
   strip-ansi@6.0.0:
     dependencies:
-      ansi-regex: 5.0.0
+      ansi-regex: 5.0.1
 
   strip-ansi@6.0.1:
     dependencies:
