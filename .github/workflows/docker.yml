@@ -88,6 +88,8 @@ jobs:
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
           platforms: linux/amd64,linux/arm64
+          # 禁止生成 SBOM / provenance 文件
+          provenance: false
       - name: Docker Hub README & description sync
         uses: meeDamian/sync-readme@v1.0.6
         with:
