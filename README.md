@@ -7,7 +7,7 @@
   <a href="https://github.com/CaoMeiYouRen/rsshub-never-die/actions?query=workflow%3ARelease" target="_blank">
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/CaoMeiYouRen/rsshub-never-die/release.yml?branch=master">
   </a>
-  <img src="https://img.shields.io/badge/node-%3E%3D18-blue.svg" />
+  <img src="https://img.shields.io/badge/node-%3E%3D22.23.4-blue.svg" />
   <a href="https://github.com/CaoMeiYouRen/rsshub-never-die#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -32,7 +32,7 @@
 ## 📦 依赖要求
 
 
-- node >=18
+- node >=22.23.4
 
 ## 🚀 部署
 
