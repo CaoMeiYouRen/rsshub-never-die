@@ -1,5 +1,14 @@
 # rsshub-never-die
 
+# [1.5.0](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.4.2...v1.5.0) (2026-10-22)
+
+
+### ✨ 新功能
+
+* **docker:** 运行时基线切换到官方 Node 24.22.1 镜像 ([1453131](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/1453131))
+* **proxy:** 出站请求增加重定向校验、响应体上限与超时 ([2b45c1a](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/2b45c1a))
+* 将 Node.js 版本要求提升到 >=22.23.4 ([d2b71cd](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/d2b71cd))
+
 ## [1.4.2](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.4.1...v1.4.2) (2026-06-21)
 
 
