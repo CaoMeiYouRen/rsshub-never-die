@@ -134,20 +134,3 @@ export function weightedRandomPick(items: NodeConfig[], count: number): NodeConf
     }
     return result
 }
-
-/**
- * 使用 fetch 函数并检查响应状态
- * 如果 响应状态码不是 2xx，则抛出错误
- *
- * @author CaoMeiYouRen
- * @date 2024-10-25
- * @export
- * @param url
- */
-export async function fetchWithStatusCheck(url: string | URL | Request) {
-    const response = await fetch(url)
-    if (response.ok) {
-        return response
-    }
-    throw new Error(`Request to ${url} failed with status ${response.status}`)
-}

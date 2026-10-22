@@ -3,7 +3,8 @@ import { env } from 'hono/adapter'
 import { StatusCode } from 'hono/utils/http-status'
 import { HTTPException } from 'hono/http-exception'
 import { Bindings } from '../types'
-import { constantTimeEqual, createAuthCode, fetchWithStatusCheck, NodeConfig, parseNodeUrls, weightedRandomPick } from '@/utils/helper'
+import { constantTimeEqual, createAuthCode, NodeConfig, parseNodeUrls, weightedRandomPick } from '@/utils/helper'
+import { DEFAULT_MAX_RESPONSE_SIZE, proxyFetch, ProxyFetchOptions } from '@/utils/proxy-fetch'
 import logger from '@/middlewares/logger'
 
 // 官方实例，默认加入节点池
@@ -17,6 +18,13 @@ app.get('*', async (c) => {
     const path = c.req.path
     const query = c.req.query()
     const { authKey, authCode, ...otherQuery } = query
+    // 出站请求统一策略：超时中止、响应体上限、重定向校验
+    const proxyOptions: ProxyFetchOptions = {
+        signal: AbortSignal.timeout(parseInt(env(c).TIMEOUT) || 60000),
+        maxBytes: parseInt(env(c).MAX_RESPONSE_SIZE) || DEFAULT_MAX_RESPONSE_SIZE,
+        allowedRedirectHosts: (env(c).ALLOW_REDIRECT_HOSTS || '').split(','),
+        allowPrivateRedirects: env(c).ALLOW_PRIVATE_REDIRECTS === 'true',
+    }
     if (AUTH_KEY) {
         if (!authKey && !authCode) {
             throw new HTTPException(403, { message: 'Auth key or auth code is required' })
@@ -49,6 +57,9 @@ app.get('*', async (c) => {
         }
     }
 
+    // 非首页返回 HTML 时视为节点失败，避免代理成为第三方页面的容器
+    const isFailedResponse = (contentType: string) => path !== '/' && contentType.includes('text/html')
+
     // 节点池：按权重抽样，且总数不超过 MAX_NODE_NUM
     const poolNodes = weightedRandomPick(allNodes, Math.min(allNodes.length, MAX_NODE_NUM))
 
@@ -62,12 +73,13 @@ app.get('*', async (c) => {
         if (!nodeUrl) {
             throw new HTTPException(500, { message: 'No valid RSSHub nodes available' })
         }
-        const res = await fetchWithStatusCheck(nodeUrl)
-        const data = await res.text()
-        const contentType = res.headers.get('Content-Type') || 'application/xml'
-        c.header('Content-Type', contentType)
+        const res = await proxyFetch(nodeUrl, proxyOptions)
+        if (isFailedResponse(res.contentType)) {
+            throw new HTTPException(500, { message: 'RSSHub node is failed' })
+        }
+        c.header('Content-Type', res.contentType)
         c.status(res.status as StatusCode)
-        return c.body(data)
+        return c.body(res.body)
     }
     if (MODE === 'failover') {
         // 自动容灾：按权重随机顺序依次尝试节点（不放回）
@@ -78,16 +90,14 @@ app.get('*', async (c) => {
                 continue
             }
             try {
-                const res = await fetchWithStatusCheck(nodeUrl)
-                const data = await res.text()
-                const contentType = res.headers.get('Content-Type') || 'application/xml'
+                const res = await proxyFetch(nodeUrl, proxyOptions)
                 // 判断 contentType 类型，除了首页之外，其他页面返回 HTML 的话判断为错误
-                if (path !== '/' && contentType.includes('text/html')) {
+                if (isFailedResponse(res.contentType)) {
                     throw new HTTPException(500, { message: 'RSSHub node is failed' })
                 }
-                c.header('Content-Type', contentType)
+                c.header('Content-Type', res.contentType)
                 c.status(res.status as StatusCode)
-                return c.body(data)
+                return c.body(res.body)
             } catch (error) {
                 logger.error(error)
                 // 忽略错误，继续请求下一个节点
@@ -107,20 +117,16 @@ app.get('*', async (c) => {
             throw new HTTPException(500, { message: 'No RSSHub nodes available' })
         }
         const res = await Promise.any(nodeUrls.map(async (url) => {
-            const resp = await fetchWithStatusCheck(url)
-            const contentType = resp.headers.get('Content-Type') || 'application/xml'
+            const resp = await proxyFetch(url, proxyOptions)
             // 判断 contentType 类型，除了首页之外，其他页面返回 HTML 的话判断为错误
-            if (path !== '/' && contentType.includes('text/html')) {
+            if (isFailedResponse(resp.contentType)) {
                 throw new HTTPException(500, { message: 'RSSHub node is failed' })
             }
             return resp
         }))
-        const data = await res.text()
-        const contentType = res.headers.get('Content-Type') || 'application/xml'
-        c.header('Content-Type', contentType)
+        c.header('Content-Type', res.contentType)
         c.status(res.status as StatusCode)
-
-        return c.body(data)
+        return c.body(res.body)
     }
     // 未指定模式
     throw new HTTPException(500, { message: 'Invalid mode' })

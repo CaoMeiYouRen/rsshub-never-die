@@ -62,6 +62,12 @@ compatibility_flags = ["nodejs_compat"]
 TIMEOUT = 60000
 # 最大请求体大小(字节)，默认 100MB
 MAX_BODY_SIZE = 104857600
+# 响应体大小上限(字节)，默认 10MB
+MAX_RESPONSE_SIZE = 10485760
+# 允许跨 host 重定向的目标，英文逗号分隔，默认只允许跳转到同源地址
+ALLOW_REDIRECT_HOSTS = ''
+# 是否允许跨 host 重定向到回环/内网地址，默认 false（同源不受限制）
+ALLOW_PRIVATE_REDIRECTS = 'false'
 # 缓存时间(秒)
 CACHE_MAX_AGE = 300
 # RSSHub 实例 的 URL 地址，使用英文逗号分隔。
@@ -74,10 +80,12 @@ RSSHUB_NODE_URLS = 'https://rsshub.rssforever.com, https://hub.slarker.me, https
 MAX_NODE_NUM=6
 # 访问码，注意和 RSSHub 的 ACCESS_KEY 不是同一个。
 # 留空则不做限制
+# 公网部署建议设置，否则任何人都可以借用本服务访问节点池
 # 启用后，请在 url 中提供 authKey 参数，或提供 authCode 参数。
 # authCode 的计算方式为 HMAC-SHA256(path, AUTH_KEY) 的十六进制字符串。
 AUTH_KEY=''
 # 运行模式，有三种模式，负载均衡、自动容灾、快速响应模式
+# 三种模式在非首页收到 HTML 响应时都会视为节点失败，不会透传给客户端。
 # 默认为负载均衡模式
 # 可选值：loadbalance, failover, quickresponse
 MODE = 'loadbalance'
@@ -194,6 +202,17 @@ LOGFILES=false
 # 最大请求体大小(字节)，默认 100MB
 # MAX_BODY_SIZE=104857600
 
+# 响应体大小上限(字节)，默认 10MB
+# 超过上限的上游响应会被中断，避免被无限流打爆内存
+# MAX_RESPONSE_SIZE=10485760
+
+# 允许跨 host 重定向的目标，英文逗号分隔，默认只允许跳转到同源地址
+# ALLOW_REDIRECT_HOSTS=''
+
+# 是否允许跨 host 重定向到回环/内网地址，默认 false（同源不受限制）
+# 开启后，被控节点可以借代理访问内网，仅在确有内网节点时使用
+# ALLOW_PRIVATE_REDIRECTS=false
+
 # RSSHub 实例 的 URL 地址，使用英文逗号分隔。
 # 官方实例 https://rsshub.app 不用列出，默认添加。
 # 每个实例可以通过竖线(|)分隔的参数进行配置：
@@ -213,6 +232,7 @@ CACHE_MAX_AGE=300
 
 # 访问码，注意和 RSSHub 的 ACCESS_KEY 不是同一个。
 # 留空则不做限制
+# 公网部署建议设置，否则任何人都可以借用本服务访问节点池
 # 启用后，请在 url 中提供 authKey 参数，或提供 authCode 参数。
 # authCode 的计算方式为 HMAC-SHA256(path, AUTH_KEY) 的十六进制字符串。
 AUTH_KEY=''
@@ -223,6 +243,7 @@ AUTH_KEY=''
 # 在自动容灾模式下，由于重新请求需要时间，会增加整体的请求时间。
 # 快速响应：按权重随机选择多个 RSSHub 实例并发请求，并返回最快的成功响应。如果全部失败，则返回错误。
 # 快速响应模式下，会增加背后实例的负载。
+# 三种模式在非首页收到 HTML 响应时都会视为节点失败，不会透传给客户端。
 # 默认为负载均衡模式
 # 可选值：loadbalance, failover, quickresponse
 MODE = 'loadbalance'
