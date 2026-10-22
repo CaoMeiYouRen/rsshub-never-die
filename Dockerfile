@@ -1,12 +1,13 @@
-FROM caomeiyouren/alpine-nodejs:latest AS nodejs
-
-# RUN npm config set registry https://registry.npmmirror.com && \
-#     pnpm config set registry https://registry.npmmirror.com &&
-
-FROM caomeiyouren/alpine-nodejs-minimize:latest AS runtime
+# 使用官方 Node 镜像作为唯一基线：Node 静态链接 brotli/OpenSSL/c-ares，
+# 避免 apk 版 Node 依赖 Alpine 仓库里未回填安全修复的系统库。
+# 更新版本时同步修改 digest（docker buildx imagetools inspect node:<version>-alpine）。
+ARG NODE_IMAGE=public.ecr.aws/docker/library/node:24.22.1-alpine@sha256:06d7adf3e0ef61a13f1d28682726366f97a15aa1888c934d3ecec86c33918b53
+FROM ${NODE_IMAGE} AS nodejs
 
 # 阶段一：构建阶段
 FROM nodejs AS builder
+
+RUN npm install -g pnpm@11
 
 WORKDIR /app
 
@@ -21,6 +22,8 @@ RUN pnpm run build
 # 阶段二：缩小阶段
 FROM nodejs AS docker-minifier
 
+RUN npm install -g pnpm@11
+
 WORKDIR /app
 
 RUN pnpm add @vercel/nft@0.24.4 fs-extra@11.2.0 --save-prod
@@ -34,9 +37,14 @@ RUN export PROJECT_ROOT=/app/ && \
     rm -rf /app/app-minimal
 
 # 阶段三：生产阶段
-FROM runtime
+FROM nodejs AS runtime
 
-ENV NODE_ENV production
+# 运行阶段不需要包管理器，裁掉以减少镜像体积
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack \
+           /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack \
+           /usr/local/bin/yarn /usr/local/bin/yarnpkg /opt/yarn-*
+
+ENV NODE_ENV=production
 
 WORKDIR /app
 
