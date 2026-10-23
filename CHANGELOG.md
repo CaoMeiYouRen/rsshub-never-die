@@ -1,5 +1,13 @@
 # rsshub-never-die
 
+## [1.5.1](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.5.0...v1.5.1) (2026-10-23)
+
+
+### 🐛 Bug 修复
+
+* **deps:** 修复依赖树中的高危漏洞版本 ([fa558e2](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/fa558e2))
+* **types:** 修复 TypeScript 6 下的类型检查错误 ([47f3f57](https://github.com/CaoMeiYouRen/rsshub-never-die/commit/47f3f57))
+
 # [1.5.0](https://github.com/CaoMeiYouRen/rsshub-never-die/compare/v1.4.2...v1.5.0) (2026-10-22)
 
 
