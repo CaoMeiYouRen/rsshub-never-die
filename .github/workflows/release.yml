@@ -88,3 +88,6 @@ jobs:
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
           platforms: linux/amd64,linux/arm64
+          # 禁止生成 provenance/SBOM 证明清单，阿里云 ACR 不支持 application/vnd.oci.empty.v1+json
+          provenance: false
+          sbom: false
