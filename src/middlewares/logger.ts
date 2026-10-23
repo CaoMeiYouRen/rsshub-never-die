@@ -28,6 +28,33 @@ async function createLogger() {
         format,
         auditFile: path.join(logDir, '.audit.json'),
     }
+    type DailyRotateFileInstance = InstanceType<typeof DailyRotateFile>
+    const fileTransports: DailyRotateFileInstance[] = []
+    const exceptionHandlers: DailyRotateFileInstance[] = []
+    const rejectionHandlers: DailyRotateFileInstance[] = []
+    if (LOGFILES) {
+        fileTransports.push(
+            new DailyRotateFile({
+                ...dailyRotateFileOption,
+                filename: '%DATE%.log',
+            }),
+            new DailyRotateFile({
+                ...dailyRotateFileOption,
+                level: 'error',
+                filename: '%DATE%.errors.log',
+            }),
+        )
+        exceptionHandlers.push(new DailyRotateFile({
+            ...dailyRotateFileOption,
+            level: 'error',
+            filename: '%DATE%.errors.log',
+        }))
+        rejectionHandlers.push(new DailyRotateFile({
+            ...dailyRotateFileOption,
+            level: 'error',
+            filename: '%DATE%.errors.log',
+        }))
+    }
     const winstonLogger = winston.createLogger({
         level: LOG_LEVEL,
         exitOnError: false,
@@ -42,30 +69,10 @@ async function createLogger() {
                     }),
                 ),
             }),
-            LOGFILES && new DailyRotateFile({
-                ...dailyRotateFileOption,
-                filename: '%DATE%.log',
-            }),
-            LOGFILES && new DailyRotateFile({
-                ...dailyRotateFileOption,
-                level: 'error',
-                filename: '%DATE%.errors.log',
-            }),
-        ].filter(Boolean),
-        exceptionHandlers: [
-            LOGFILES && new DailyRotateFile({
-                ...dailyRotateFileOption,
-                level: 'error',
-                filename: '%DATE%.errors.log',
-            }),
-        ].filter(Boolean),
-        rejectionHandlers: [
-            LOGFILES && new DailyRotateFile({
-                ...dailyRotateFileOption,
-                level: 'error',
-                filename: '%DATE%.errors.log',
-            }),
-        ].filter(Boolean),
+            ...fileTransports,
+        ],
+        exceptionHandlers,
+        rejectionHandlers,
     })
     return winstonLogger
 }
